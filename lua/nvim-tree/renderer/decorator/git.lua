@@ -211,6 +211,11 @@ function DecoratorGit:calculate_highlight(node)
     return nil
   end
 
+  -- only apply the git highlight to the filename for "git ignored" files
+  if git_status[1] ~= "!!" then
+    return nil
+  end
+
   if node.nodes then
     return self.folder_hl[git_status[1]]
   else

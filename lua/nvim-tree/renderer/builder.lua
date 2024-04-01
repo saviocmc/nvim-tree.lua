@@ -196,6 +196,12 @@ end
 ---@return HighlightedString[]
 function Builder:format_line(indent_markers, arrows, icon, name, node)
   local added_len = 0
+
+  -- add a space after the icon to make them bigger on the terminal
+  if icon.str then
+    icon.str = icon.str .. " "
+  end
+
   local function add_to_end(t1, t2)
     if not t2 then
       return
